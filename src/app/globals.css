@@ -1,35 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap');
 
 :root {
-  /* Brand Colors - Soft, approachable vibe for language learning */
-  --color-primary: #6366f1;
-  --color-primary-hover: #4f46e5;
-  --color-primary-light: #e0e7ff;
-  
-  --color-secondary: #f43f5e;
-  --color-secondary-light: #ffe4e6;
-  
-  --color-success: #10b981;
-  --color-success-light: #d1fae5;
-  
-  --color-background: #f8fafc;
-  --color-surface: #ffffff;
-  
-  --color-text-main: #0f172a;
-  --color-text-muted: #64748b;
-  --color-text-inverse: #ffffff;
-  
-  --color-border: #e2e8f0;
+  /* ========= Pinterest Design System ========= */
 
-  /* Shadows for depth */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-float: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  
-  /* Border Radius */
-  --radius-md: 12px;
-  --radius-lg: 20px;
+  /* Brand Colors */
+  --color-primary: #e60023;           /* Pinterest Red — CTA only */
+  --color-primary-hover: #c0001e;     /* Darker Red */
+  --color-primary-light: hsla(60, 20%, 98%, 0.8); /* Warm Wash */
+
+  --color-success: #103c25;           /* Green 700 */
+  --color-success-light: #d1fae5;
+
+  /* Text */
+  --color-text-main: #211922;         /* Plum Black — warmer than pure black */
+  --color-text-muted: #62625b;        /* Olive Gray */
+  --color-text-inverse: #ffffff;
+
+  /* Surfaces */
+  --color-background: #faf9f7;        /* Warm White */
+  --color-surface: #ffffff;
+  --color-surface-warm: #e5e5e0;      /* Sand Gray — secondary button bg */
+  --color-surface-light: #e0e0d9;     /* Warm Light — circular button bg */
+
+  /* Borders */
+  --color-border: #e5e5e0;            /* Warm border */
+  --color-border-input: #91918c;      /* Warm Silver — for inputs */
+
+  /* Focus */
+  --color-focus: #435ee5;
+
+  /* Dark surface */
+  --color-dark: #33332e;
+
+  /* Error */
+  --color-error: #9e0a0a;
+  --color-error-light: #ffe4e4;
+
+  /* Shadows — plum-tinted, minimal */
+  --shadow-sm: 0 1px 2px 0 rgb(33 25 34 / 0.06);
+  --shadow-md: 0 4px 6px -1px rgb(33 25 34 / 0.08), 0 2px 4px -2px rgb(33 25 34 / 0.06);
+  --shadow-lg: 0 10px 15px -3px rgb(33 25 34 / 0.08), 0 4px 6px -4px rgb(33 25 34 / 0.05);
+  --shadow-float: 0 20px 40px -8px rgb(33 25 34 / 0.12);
+
+  /* Border Radius — Pinterest scale */
+  --radius-sm: 12px;    /* Small cards, links */
+  --radius-md: 16px;    /* Buttons, inputs — core Pinterest radius */
+  --radius-lg: 20px;    /* Feature cards */
+  --radius-xl: 28px;    /* Large containers */
+  --radius-2xl: 40px;   /* Hero blocks */
   --radius-full: 9999px;
 
   /* Spacing */
@@ -43,13 +61,12 @@
 }
 
 body {
-  font-family: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Noto Sans JP',
+    -apple-system, system-ui, 'Segoe UI', Roboto,
+    'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo,
+    'Helvetica Neue', Arial, sans-serif;
   color: var(--color-text-main);
   background-color: var(--color-background);
-  background-image: 
-    radial-gradient(at 0% 0%, hsla(253,16%,7%,0.02) 0, transparent 50%), 
-    radial-gradient(at 50% 0%, hsla(225,39%,30%,0.02) 0, transparent 50%), 
-    radial-gradient(at 100% 0%, hsla(339,49%,30%,0.02) 0, transparent 50%);
   min-height: 100vh;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -70,16 +87,8 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Glassmorphism utilities */
-.glass {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-}
-
 .main-container {
-  max-width: 480px; /* Mobile layout simulation on web */
+  max-width: 480px;
   margin: 0 auto;
   min-height: 100vh;
   background-color: var(--color-background);
@@ -90,7 +99,7 @@ a {
 
 @media (min-width: 481px) {
   .main-container {
-    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.1);
+    box-shadow: 0 0 0 1px var(--color-border), var(--shadow-float);
   }
 }
 
@@ -99,5 +108,5 @@ a {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  padding-bottom: calc(85px + var(--spacing-safe-bottom)); /* Reserve space for bottom navigation */
+  padding-bottom: calc(85px + var(--spacing-safe-bottom));
 }

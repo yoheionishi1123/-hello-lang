@@ -1,51 +1,48 @@
+/* Pinterest-style login page — warm white, flat */
 .container {
   display: flex;
   flex-direction: column;
   padding: 24px;
   min-height: 100vh;
   justify-content: center;
-  position: relative;
-  overflow: hidden;
+  background: var(--color-background);
 }
 
 .header {
   text-align: center;
-  margin-bottom: 40px;
-  z-index: 1;
+  margin-bottom: 36px;
 }
 
 .title {
-  font-size: 32px;
+  font-size: 2rem;
   font-weight: 700;
   color: var(--color-text-main);
   margin-bottom: 8px;
-  letter-spacing: -0.5px;
+  letter-spacing: -1.2px;
 }
 
 .subtitle {
-  font-size: 15px;
+  font-size: 0.9rem;
   color: var(--color-text-muted);
+  line-height: 1.5;
 }
 
+/* Flat card — no heavy glassmorphism */
 .formCard {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: 32px 24px;
-  box-shadow: var(--shadow-lg);
-  z-index: 1;
+  padding: 28px 24px;
 }
 
 .inputGroup {
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .label {
-  font-size: 14px;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--color-text-main);
   margin-bottom: 8px;
@@ -63,52 +60,51 @@
   color: var(--color-text-muted);
 }
 
+/* Pinterest-style input — warm silver border, 16px radius */
 .input {
   width: 100%;
-  padding: 14px 14px 14px 44px;
+  padding: 11px 15px 11px 44px;
   border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
-  background: rgba(255, 255, 255, 0.8);
-  font-size: 16px;
+  border: 1px solid var(--color-border-input);
+  background: var(--color-surface);
+  font-size: 1rem;
+  font-family: inherit;
   color: var(--color-text-main);
-  transition: all 0.2s ease;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .input:focus {
   outline: none;
-  border-color: var(--color-primary);
-  background: white;
-  box-shadow: 0 0 0 4px var(--color-primary-light);
+  border-color: var(--color-focus);
+  box-shadow: 0 0 0 3px rgba(67, 94, 229, 0.12);
 }
 
+/* Primary Red submit button */
 .submitBtn {
   width: 100%;
-  padding: 16px;
+  padding: 14px 16px;
   background-color: var(--color-primary);
-  color: white;
+  color: #000000;
   border-radius: var(--radius-md);
-  font-size: 16px;
+  font-size: 0.9rem;
   font-weight: 600;
   margin-top: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
-  transition: all 0.2s ease;
-}
-
-.submitBtn:hover:not(:disabled) {
-  background-color: var(--color-primary-hover);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  transition: opacity 0.2s, transform 0.1s;
+  border: 2px solid rgba(255, 255, 255, 0);
+  cursor: pointer;
 }
 
 .submitBtn:active:not(:disabled) {
-  transform: translateY(0);
+  transform: scale(0.97);
+  opacity: 0.9;
 }
 
 .submitBtn:disabled {
-  opacity: 0.7;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
@@ -118,43 +114,97 @@
 
 @keyframes spin {
   from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  to   { transform: rotate(360deg); }
 }
 
 .toggleSwitch {
   text-align: center;
   margin-top: 24px;
-  font-size: 14px;
+  font-size: 0.85rem;
   color: var(--color-text-muted);
 }
 
 .toggleLink {
   color: var(--color-primary);
-  font-weight: 600;
+  font-weight: 700;
   background: none;
   border: none;
   padding: 0;
   margin-left: 6px;
   cursor: pointer;
   display: inline;
+  font-family: inherit;
+  font-size: inherit;
 }
 
 .toggleLink:hover {
   text-decoration: underline;
 }
 
+/* Error — warm red, Pinterest style */
 .errorBox {
   padding: 12px 16px;
-  background-color: var(--color-secondary-light);
-  border-left: 4px solid var(--color-secondary);
-  border-radius: 4px;
-  color: var(--color-secondary);
-  font-size: 14px;
-  margin-bottom: 20px;
-  animation: slideIn 0.3s ease;
+  background-color: var(--color-error-light);
+  border-left: 3px solid var(--color-error);
+  border-radius: var(--radius-sm);
+  color: var(--color-error);
+  font-size: 0.85rem;
+  margin-bottom: 18px;
+  animation: slideIn 0.25s ease;
+}
+
+/* Success message */
+.successBox {
+  padding: 12px 16px;
+  background-color: var(--color-success-light);
+  border-left: 3px solid var(--color-success);
+  border-radius: var(--radius-sm);
+  color: var(--color-success);
+  font-size: 0.85rem;
+  margin-bottom: 18px;
+  animation: slideIn 0.25s ease;
 }
 
 @keyframes slideIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Logged-in state card */
+.userCard {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  text-align: center;
+}
+
+.userEmail {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-bottom: 20px;
+  word-break: break-all;
+}
+
+/* Secondary sand logout button */
+.logoutBtn {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--color-surface-warm);
+  color: var(--color-text-main);
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transition: opacity 0.2s, transform 0.1s;
+  border: 2px solid rgba(255, 255, 255, 0);
+  cursor: pointer;
+}
+
+.logoutBtn:active {
+  transform: scale(0.97);
+  opacity: 0.8;
 }
