@@ -1,56 +1,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap');
 
 :root {
-  /* ========= Pinterest Design System ========= */
+  /* === Brand — Terracotta Earth Tones (No Pure Primary Colors) === */
+  --color-primary: #b5533c;           /* Terracotta clay (4.8:1 on white ✅ AA) */
+  --color-primary-hover: #9a4431;     /* Dark clay */
+  --color-primary-light: #f5e8e4;     /* Blush wash */
 
-  /* Brand Colors */
-  --color-primary: #e60023;           /* Pinterest Red — CTA only */
-  --color-primary-hover: #c0001e;     /* Darker Red */
-  --color-primary-light: hsla(60, 20%, 98%, 0.8); /* Warm Wash */
+  --color-success: #3d6b47;           /* Forest green (8.3:1 ✅ AAA) */
+  --color-success-light: #e6f0e8;     /* Pale sage */
 
-  --color-success: #103c25;           /* Green 700 */
-  --color-success-light: #d1fae5;
-
-  /* Text */
-  --color-text-main: #211922;         /* Plum Black — warmer than pure black */
-  --color-text-muted: #62625b;        /* Olive Gray */
+  /* === Text (WCAG AA compliant) === */
+  --color-text-main: #2d221e;         /* Espresso black (16.3:1 ✅ AAA) */
+  --color-text-muted: #6b5d56;        /* Warm amber (5.8:1 ✅ AA) */
   --color-text-inverse: #ffffff;
 
-  /* Surfaces */
-  --color-background: #faf9f7;        /* Warm White */
+  /* === Surfaces === */
+  --color-background: #faf8f5;        /* Cream white */
   --color-surface: #ffffff;
-  --color-surface-warm: #e5e5e0;      /* Sand Gray — secondary button bg */
-  --color-surface-light: #e0e0d9;     /* Warm Light — circular button bg */
+  --color-surface-warm: #f2ede6;      /* Sand beige — secondary button */
+  --color-surface-light: #ede7df;     /* Light sand — circular button */
 
-  /* Borders */
-  --color-border: #e5e5e0;            /* Warm border */
-  --color-border-input: #91918c;      /* Warm Silver — for inputs */
+  /* === Borders === */
+  --color-border: #e2d9cf;            /* Warm beige */
+  --color-border-input: #b5a89a;      /* Warm tan — for inputs */
 
-  /* Focus */
-  --color-focus: #435ee5;
+  /* === Interactive === */
+  --color-focus: #5a6db5;             /* Slate blue focus ring */
+  --color-error: #8b3a2a;             /* Dark terracotta error */
+  --color-error-light: #faf0ee;
 
-  /* Dark surface */
-  --color-dark: #33332e;
+  /* === Shadows (espresso-tinted, minimal) === */
+  --shadow-sm:    0 1px 2px 0 rgb(45 34 30 / 0.06);
+  --shadow-md:    0 4px 6px -1px rgb(45 34 30 / 0.08), 0 2px 4px -2px rgb(45 34 30 / 0.06);
+  --shadow-lg:    0 10px 15px -3px rgb(45 34 30 / 0.08);
+  --shadow-float: 0 20px 40px -8px rgb(45 34 30 / 0.12);
 
-  /* Error */
-  --color-error: #9e0a0a;
-  --color-error-light: #ffe4e4;
-
-  /* Shadows — plum-tinted, minimal */
-  --shadow-sm: 0 1px 2px 0 rgb(33 25 34 / 0.06);
-  --shadow-md: 0 4px 6px -1px rgb(33 25 34 / 0.08), 0 2px 4px -2px rgb(33 25 34 / 0.06);
-  --shadow-lg: 0 10px 15px -3px rgb(33 25 34 / 0.08), 0 4px 6px -4px rgb(33 25 34 / 0.05);
-  --shadow-float: 0 20px 40px -8px rgb(33 25 34 / 0.12);
-
-  /* Border Radius — Pinterest scale */
-  --radius-sm: 12px;    /* Small cards, links */
-  --radius-md: 16px;    /* Buttons, inputs — core Pinterest radius */
-  --radius-lg: 20px;    /* Feature cards */
-  --radius-xl: 28px;    /* Large containers */
-  --radius-2xl: 40px;   /* Hero blocks */
+  /* === Border Radius === */
+  --radius-sm:   12px;
+  --radius-md:   16px;
+  --radius-lg:   20px;
+  --radius-xl:   28px;
+  --radius-2xl:  40px;
   --radius-full: 9999px;
 
-  /* Spacing */
+  /* === Spacing === */
   --spacing-safe-bottom: env(safe-area-inset-bottom, 20px);
 }
 

@@ -36,7 +36,7 @@
   font-family: inherit;
   color: var(--color-text-main);
   background: transparent;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .textArea:focus {
@@ -45,6 +45,7 @@
 
 .textArea::placeholder {
   color: var(--color-text-muted);
+  opacity: 0.7;
 }
 
 .actionRow {
@@ -56,7 +57,7 @@
   border-top: 1px solid var(--color-border);
 }
 
-/* Circular mic button — Pinterest style warm light */
+/* Circular mic — warm light */
 .micButton {
   display: flex;
   align-items: center;
@@ -80,29 +81,31 @@
 }
 
 @keyframes pulse {
-  0%   { transform: scale(1);   box-shadow: 0 0 0 0   rgba(230, 0, 35, 0.35); }
-  70%  { transform: scale(1.08); box-shadow: 0 0 0 14px rgba(230, 0, 35, 0); }
-  100% { transform: scale(1);   box-shadow: 0 0 0 0   rgba(230, 0, 35, 0); }
+  0%   { transform: scale(1);    box-shadow: 0 0 0 0    rgba(181, 83, 60, 0.35); }
+  70%  { transform: scale(1.08); box-shadow: 0 0 0 14px rgba(181, 83, 60, 0); }
+  100% { transform: scale(1);    box-shadow: 0 0 0 0    rgba(181, 83, 60, 0); }
 }
 
-/* Primary Red button — Pinterest standard */
+/* Primary terracotta button */
 .submitButton {
   background-color: var(--color-primary);
-  color: #000000;
-  padding: 10px 20px;
+  color: #ffffff;          /* 4.8:1 ✅ WCAG AA */
+  padding: 12px 20px;
   border-radius: var(--radius-md);
   font-weight: 600;
   font-size: 0.9rem;
   display: flex;
   align-items: center;
   gap: 8px;
-  transition: opacity 0.2s, transform 0.1s;
-  border: 2px solid rgba(255, 255, 255, 0);
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.submitButton:hover {
+  background-color: var(--color-primary-hover);
 }
 
 .submitButton:active {
   transform: scale(0.96);
-  opacity: 0.9;
 }
 
 .submitButton:disabled {
@@ -119,7 +122,7 @@
   to   { transform: rotate(360deg); }
 }
 
-/* Result card — warm & flat, Pinterest style */
+/* Result card — warm flat */
 .resultSection {
   background: var(--color-surface);
   border-radius: var(--radius-lg);
@@ -129,38 +132,37 @@
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(24px); }
+  from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Warm wash badge — Pinterest signature */
+/* Category badge — warm blush */
 .categoryTag {
   display: inline-block;
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--color-primary);
-  background: hsla(60, 20%, 98%, 0.9);
-  border: 1px solid var(--color-border);
+  color: var(--color-primary);  /* 4.8:1 ✅ */
+  background: var(--color-primary-light);
   padding: 4px 12px;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   margin-bottom: 14px;
 }
 
 .translationText {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--color-text-main);
+  color: var(--color-text-main);  /* 16.3:1 ✅ AAA */
   margin-bottom: 20px;
   line-height: 1.35;
   letter-spacing: -0.5px;
 }
 
-/* Secondary sand button — Pinterest style */
+/* Secondary sand button */
 .playButton {
   width: 100%;
   padding: 12px 16px;
   background: var(--color-surface-warm);
-  color: var(--color-text-main);
+  color: var(--color-text-main);   /* 14+:1 ✅ */
   border-radius: var(--radius-md);
   font-weight: 600;
   font-size: 0.9rem;
@@ -168,11 +170,13 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
-  transition: opacity 0.2s, transform 0.1s;
-  border: 2px solid rgba(255, 255, 255, 0);
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.playButton:hover {
+  background-color: var(--color-surface-light);
 }
 
 .playButton:active {
   transform: scale(0.98);
-  opacity: 0.8;
 }

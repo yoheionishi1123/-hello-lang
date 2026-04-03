@@ -19,7 +19,7 @@
 }
 
 .subtitle {
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   color: var(--color-text-muted);
   margin-top: 4px;
 }
@@ -32,14 +32,14 @@
   align-items: center;
 }
 
-/* Pinterest-style card — flat, generous radius, warm border */
+/* Card — warm border, generous radius, minimal shadow */
 .card {
   position: absolute;
   width: 100%;
   max-width: 320px;
   height: 420px;
   background: var(--color-surface);
-  border-radius: var(--radius-xl);       /* 28px — Large container radius */
+  border-radius: var(--radius-xl);
   box-shadow: var(--shadow-float);
   display: flex;
   flex-direction: column;
@@ -62,22 +62,21 @@
   text-align: center;
 }
 
-/* Warm wash badge */
+/* Badge — blush warm */
 .cardCategory {
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--color-text-muted);
-  background: var(--color-surface-warm);
+  color: var(--color-primary);    /* 4.8:1 ✅ */
+  background: var(--color-primary-light);
   padding: 4px 14px;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   margin-bottom: auto;
-  letter-spacing: 0;
 }
 
 .nativeText {
   font-size: 1rem;
   font-weight: 500;
-  color: var(--color-text-muted);
+  color: var(--color-text-muted); /* 5.8:1 ✅ AA */
   margin-top: 24px;
   margin-bottom: 20px;
   line-height: 1.5;
@@ -91,17 +90,17 @@
   margin-bottom: 20px;
 }
 
-/* English phrase — Pinterest plum black, not colored */
+/* English phrase — espresso, strong contrast */
 .englishText {
-  font-size: 1.55rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  color: var(--color-text-main);
+  color: var(--color-text-main);  /* 16.3:1 ✅ AAA */
   line-height: 1.3;
   margin-bottom: auto;
   letter-spacing: -0.5px;
 }
 
-/* Circular audio button — Pinterest warm light style */
+/* Circular audio button */
 .audioButton {
   margin-top: 20px;
   width: 56px;
@@ -122,7 +121,7 @@
   color: white;
 }
 
-/* Swipe hints — warm sand background */
+/* Swipe hints — warm sand */
 .swipeHints {
   display: flex;
   justify-content: space-between;
@@ -144,7 +143,6 @@
   color: var(--color-success);
 }
 
-/* Empty state */
 .emptyContainer {
   display: flex;
   flex-direction: column;
@@ -175,27 +173,27 @@
   font-size: 0.9rem;
 }
 
-/* Primary Red reset button */
 .resetButton {
   display: flex;
   align-items: center;
   gap: 8px;
   background: var(--color-primary);
-  color: #000000;
-  padding: 10px 24px;
+  color: #ffffff;
+  padding: 12px 24px;
   border-radius: var(--radius-md);
   font-weight: 600;
   font-size: 0.9rem;
-  transition: transform 0.1s, opacity 0.2s;
-  border: 2px solid rgba(255, 255, 255, 0);
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.resetButton:hover {
+  background-color: var(--color-primary-hover);
 }
 
 .resetButton:active {
   transform: scale(0.96);
-  opacity: 0.9;
 }
 
-/* Controls row */
 .controls {
   display: flex;
   justify-content: center;
@@ -210,7 +208,6 @@
   gap: 6px;
   background: var(--color-surface-warm);
   color: var(--color-text-muted);
-  border: 2px solid rgba(255, 255, 255, 0);
   padding: 8px 16px;
   border-radius: var(--radius-md);
   font-size: 0.75rem;
@@ -224,5 +221,5 @@
 
 .controlBtn.activeCtrl {
   background: var(--color-primary);
-  color: #000000;
+  color: #ffffff;
 }

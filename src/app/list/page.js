@@ -15,8 +15,6 @@ export default function ListPage() {
 
   useEffect(() => { playingIndexRef.current = playingIndex; }, [playingIndex]);
 
-  if (!isLoaded) return <div className={styles.container}>Loading...</div>;
-
   const filteredPhrases = phrases.filter(p => 
     p.original.includes(searchTerm) || 
     p.translation.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -27,6 +25,8 @@ export default function ListPage() {
   useEffect(() => {
     filteredPhrasesRef.current = filteredPhrases;
   }, [filteredPhrases]);
+
+  if (!isLoaded) return <div className={styles.container}>Loading...</div>;
 
   const playSingleAudio = (text) => {
     if ('speechSynthesis' in window) {

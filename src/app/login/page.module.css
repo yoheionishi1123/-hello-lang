@@ -1,4 +1,3 @@
-/* Pinterest-style login page — warm white, flat */
 .container {
   display: flex;
   flex-direction: column;
@@ -16,18 +15,18 @@
 .title {
   font-size: 2rem;
   font-weight: 700;
-  color: var(--color-text-main);
+  color: var(--color-text-main);   /* 16.3:1 ✅ */
   margin-bottom: 8px;
   letter-spacing: -1.2px;
 }
 
 .subtitle {
   font-size: 0.9rem;
-  color: var(--color-text-muted);
+  color: var(--color-text-muted);  /* 5.8:1 ✅ */
   line-height: 1.5;
 }
 
-/* Flat card — no heavy glassmorphism */
+/* Flat warm card */
 .formCard {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -42,7 +41,7 @@
 }
 
 .label {
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--color-text-main);
   margin-bottom: 8px;
@@ -60,14 +59,14 @@
   color: var(--color-text-muted);
 }
 
-/* Pinterest-style input — warm silver border, 16px radius */
+/* Warm tan border input — 16px radius */
 .input {
   width: 100%;
-  padding: 11px 15px 11px 44px;
+  padding: 12px 15px 12px 44px;
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border-input);
   background: var(--color-surface);
-  font-size: 1rem;
+  font-size: 1rem;                  /* 16px — モバイルズーム防止 */
   font-family: inherit;
   color: var(--color-text-main);
   transition: border-color 0.2s, box-shadow 0.2s;
@@ -76,15 +75,15 @@
 .input:focus {
   outline: none;
   border-color: var(--color-focus);
-  box-shadow: 0 0 0 3px rgba(67, 94, 229, 0.12);
+  box-shadow: 0 0 0 3px rgba(90, 109, 181, 0.12);
 }
 
-/* Primary Red submit button */
+/* Primary terracotta submit button */
 .submitBtn {
   width: 100%;
   padding: 14px 16px;
   background-color: var(--color-primary);
-  color: #000000;
+  color: #ffffff;                   /* 4.8:1 ✅ WCAG AA */
   border-radius: var(--radius-md);
   font-size: 0.9rem;
   font-weight: 600;
@@ -93,14 +92,16 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
-  transition: opacity 0.2s, transform 0.1s;
-  border: 2px solid rgba(255, 255, 255, 0);
+  transition: background-color 0.2s, transform 0.1s;
   cursor: pointer;
+}
+
+.submitBtn:hover:not(:disabled) {
+  background-color: var(--color-primary-hover);
 }
 
 .submitBtn:active:not(:disabled) {
   transform: scale(0.97);
-  opacity: 0.9;
 }
 
 .submitBtn:disabled {
@@ -120,12 +121,12 @@
 .toggleSwitch {
   text-align: center;
   margin-top: 24px;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   color: var(--color-text-muted);
 }
 
 .toggleLink {
-  color: var(--color-primary);
+  color: var(--color-primary);    /* 4.8:1 ✅ */
   font-weight: 700;
   background: none;
   border: none;
@@ -135,32 +136,29 @@
   display: inline;
   font-family: inherit;
   font-size: inherit;
-}
-
-.toggleLink:hover {
   text-decoration: underline;
 }
 
-/* Error — warm red, Pinterest style */
+/* Error — dark terracotta, no pure red */
 .errorBox {
   padding: 12px 16px;
   background-color: var(--color-error-light);
   border-left: 3px solid var(--color-error);
   border-radius: var(--radius-sm);
-  color: var(--color-error);
-  font-size: 0.85rem;
+  color: var(--color-error);      /* dark terracotta ✅ */
+  font-size: 0.875rem;
   margin-bottom: 18px;
   animation: slideIn 0.25s ease;
 }
 
-/* Success message */
+/* Success */
 .successBox {
   padding: 12px 16px;
   background-color: var(--color-success-light);
   border-left: 3px solid var(--color-success);
   border-radius: var(--radius-sm);
   color: var(--color-success);
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   margin-bottom: 18px;
   animation: slideIn 0.25s ease;
 }
@@ -170,7 +168,7 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Logged-in state card */
+/* Logged-in state */
 .userCard {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
@@ -180,7 +178,7 @@
 }
 
 .userEmail {
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   color: var(--color-text-muted);
   margin-bottom: 20px;
   word-break: break-all;
@@ -191,7 +189,7 @@
   width: 100%;
   padding: 12px 16px;
   background: var(--color-surface-warm);
-  color: var(--color-text-main);
+  color: var(--color-text-main);   /* 14+:1 ✅ */
   border-radius: var(--radius-md);
   font-size: 0.9rem;
   font-weight: 600;
@@ -199,12 +197,14 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
-  transition: opacity 0.2s, transform 0.1s;
-  border: 2px solid rgba(255, 255, 255, 0);
+  transition: background-color 0.2s, transform 0.1s;
   cursor: pointer;
+}
+
+.logoutBtn:hover {
+  background-color: var(--color-surface-light);
 }
 
 .logoutBtn:active {
   transform: scale(0.97);
-  opacity: 0.8;
 }
