@@ -1,0 +1,67 @@
+.bottomNav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  height: calc(80px + var(--spacing-safe-bottom));
+  padding-bottom: var(--spacing-safe-bottom);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid var(--color-border);
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+/* Border radius for web version */
+@media (min-width: 481px) {
+  .bottomNav {
+    /* If the container had rounded corners, nav would match. Currently we don't corner the container */
+  }
+}
+
+.navItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  flex: 1;
+  height: 100%;
+  color: var(--color-text-muted);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.navItem:hover {
+  color: var(--color-primary-hover);
+}
+
+.navItem.active {
+  color: var(--color-primary);
+}
+
+.navItem.active .icon {
+  transform: translateY(-2px);
+  stroke-width: 2.5;
+}
+
+.navItem.active .label {
+  opacity: 1;
+  font-weight: 700;
+}
