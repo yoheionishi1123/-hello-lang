@@ -1,0 +1,30 @@
+{
+  "goals": {
+    "users": {
+      "label": "ユーザー登録数",
+      "target": 100,
+      "unit": "人"
+    },
+    "phrases": {
+      "label": "フレーズ登録数（全ユーザー合計）",
+      "target": 1000,
+      "unit": "件"
+    },
+    "mrr": {
+      "label": "月次売上 (MRR)",
+      "target": 10000,
+      "unit": "円"
+    }
+  },
+  "costs": {
+    "vercel": { "label": "Vercel", "amount": 0, "currency": "USD" },
+    "supabase": { "label": "Supabase", "amount": 0, "currency": "USD" },
+    "brevo": { "label": "Brevo", "amount": 0, "currency": "USD" },
+    "resend": { "label": "Resend", "amount": 0, "currency": "USD" },
+    "domain": { "label": "hellolang.app ドメイン", "amount": 0, "currency": "USD" }
+  },
+  "revenue": {
+    "current_mrr": 0,
+    "currency": "JPY"
+  }
+}

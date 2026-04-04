@@ -19,7 +19,9 @@
     "uuid": "^13.0.0"
   },
   "devDependencies": {
+    "@notionhq/client": "^5.16.0",
     "eslint": "^9",
-    "eslint-config-next": "16.2.2"
+    "eslint-config-next": "16.2.2",
+    "node-fetch": "^3.3.2"
   }
 }
