@@ -1,4 +1,4 @@
--- Supabase SQL Schema for HelloLang (Phrase Swiper)
+-- Supabase SQL Schema for Hello Lang
 -- Please run this script in the Supabase SQL Editor.
 
 -- 1. Create the `phrases` table

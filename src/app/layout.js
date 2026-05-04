@@ -2,7 +2,7 @@ import './globals.css'
 import BottomNav from '@/components/BottomNav';
 
 export const metadata = {
-  title: 'Hello Lang - Learn & Swipe',
+  title: 'Hello Lang',
   description: 'Translate daily phrases instantly and learn them effectively.',
 }
 

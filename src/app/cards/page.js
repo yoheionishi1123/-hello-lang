@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePhrases } from '@/hooks/usePhrases';
 import { Volume2, ChevronLeft, ChevronRight, CheckCircle, RefreshCcw, Repeat, PlaySquare } from 'lucide-react';
@@ -12,7 +12,6 @@ export default function CardsPage() {
 
   const [isLooping, setIsLooping] = useState(false);
   const [isAutoPlayNext, setIsAutoPlayNext] = useState(false);
-  const [history, setHistory] = useState([]);
   
   const deckRef = useRef(deck);
   const isLoopingRef = useRef(isLooping);
@@ -24,11 +23,53 @@ export default function CardsPage() {
   useEffect(() => { isLoopingRef.current = isLooping; }, [isLooping]);
   useEffect(() => { isAutoPlayNextRef.current = isAutoPlayNext; }, [isAutoPlayNext]);
 
+  const playAudio = useCallback(function playAudioImpl(text, isAutoSequence = false) {
+    if (!('speechSynthesis' in window)) return;
+
+    if (!isAutoSequence) {
+      window.speechSynthesis.cancel();
+    }
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-US';
+
+    utterance.onend = () => {
+      if (isLoopingRef.current) {
+        setTimeout(() => playAudioImpl(text, true), 800);
+      } else if (isAutoPlayNextRef.current) {
+        const currentDeck = deckRef.current;
+        if (currentDeck.length > 0) {
+          const topCard = currentDeck[currentDeck.length - 1];
+
+          if (currentDeck.length > 1) {
+            setExitDirection(-1);
+
+            setDeck(prev => {
+              const newArray = prev.filter(c => c.id !== topCard.id);
+              return [topCard, ...newArray];
+            });
+
+            const nextCard = currentDeck[currentDeck.length - 2];
+            setTimeout(() => playAudioImpl(nextCard.translation, true), 600);
+          } else {
+            setTimeout(() => playAudioImpl(text, true), 1500);
+          }
+        }
+      }
+    };
+
+    window.speechSynthesis.speak(utterance);
+  }, []);
+
   useEffect(() => {
     if (isLoaded && !hasInitialized) {
       const learningPhrases = phrases.filter(p => p.status !== 'mastered');
-      setDeck([...learningPhrases].reverse());
-      setHasInitialized(true);
+      const timeoutId = window.setTimeout(() => {
+        setDeck([...learningPhrases].reverse());
+        setHasInitialized(true);
+      }, 0);
+
+      return () => window.clearTimeout(timeoutId);
     }
   }, [isLoaded, phrases, hasInitialized]);
 
@@ -47,7 +88,7 @@ export default function CardsPage() {
     } else {
       topCardRef.current = null;
     }
-  }, [deck, isAutoPlayNext]);
+  }, [deck, isAutoPlayNext, playAudio]);
 
   const handleManualSwipe = (id, direction) => {
     // 手動でスワイプしたときは現在の音声を強制停止する
@@ -63,50 +104,6 @@ export default function CardsPage() {
         if (card) return [card, ...newDeck];
         return newDeck;
       });
-    }
-  };
-
-  function playAudio(text, isAutoSequence = false) {
-    if ('speechSynthesis' in window) {
-      // ユーザーの直接操作の場合は現在の再生をキャンセルして優先する
-      if (!isAutoSequence) {
-        window.speechSynthesis.cancel();
-      }
-      
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'en-US';
-      
-      utterance.onend = () => {
-        if (isLoopingRef.current) {
-            // ループONの場合、少し間を開けて同じカードを再生
-            setTimeout(() => playAudio(text, true), 800);
-        } else if (isAutoPlayNextRef.current) {
-            // 連続再生ONの場合、次のカードに遷移させる
-            const currentDeck = deckRef.current;
-            if (currentDeck.length > 0) {
-              const topCard = currentDeck[currentDeck.length - 1];
-              
-              if (currentDeck.length > 1) {
-                setExitDirection(-1);
-                
-                // 自動スワイプでは cancel() を呼ばないように Deck だけ更新する
-                setDeck(prev => {
-                  const newArray = prev.filter(c => c.id !== topCard.id);
-                  return [topCard, ...newArray]; // 一番下（配列の先頭）に移動
-                });
-                
-                const nextCard = currentDeck[currentDeck.length - 2];
-                // 次の音声を再生
-                setTimeout(() => playAudio(nextCard.translation, true), 600);
-              } else {
-                // 残り1枚の場合はそのままリピート
-                setTimeout(() => playAudio(text, true), 1500);
-              }
-            }
-        }
-      };
-
-      window.speechSynthesis.speak(utterance);
     }
   };
 
